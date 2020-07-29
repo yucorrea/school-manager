@@ -1,0 +1,108 @@
+        <div class="item">
+         <div>Avatar URL</div>
+          <div>
+            <input 
+            type="text"
+            name="avatar"
+            placeholder="http://"
+            value="{{student.avatar}}"
+            >
+          </div>
+       </div>
+
+      <input type="text" name="id"value="{{student.id}}" hidden>
+       <div class="item">
+         <div>Nome completo</div>
+          <div>
+            <input 
+            type="text"
+            name="name"
+            placeholder="Nome do professor"
+             value="{{student.name}}"
+            >
+          </div>
+       </div>
+
+       <div class="item">
+         <div>Data de nascimento </div>
+          <div>
+             <input 
+            type="date"
+            name="birth"
+            value="{{student.birth}}"
+            >
+          </div>
+       </div>
+
+        <div class="item">
+         <div>Grau de Escolaridade</div>
+          <div>
+           <select name="degree" >
+             <option value="">Escolha uma opção</option>
+             <option 
+             value="Ensino Medio Completo" 
+             {% if student.degree == "Medio" %}
+             selected
+             {%endif%}
+             >Ensino Médio Completo</option>
+             <option 
+             value="Ensino Superior Completo"
+             {% if student.degree == "Superior" %}
+             selected
+             {%endif%}
+             >Ensino Superior Completo</option>
+             <option
+              value="Mestrado"
+             {% if student.degree == "Mestrado" %}
+             selected
+             {%endif%}
+             >Mestrado</option>
+             <option 
+             value="Doutorado"
+              {% if student.degree == "Doutorado" %}
+             selected
+             {%endif%}
+             >Doutorado</option>
+           </select>
+          </div>
+       </div>
+
+       <div class="item">
+         <div>Tipo de Aula </div>
+          <div>
+            <span>
+              <input 
+              type="radio" 
+              name="type" 
+              value="Presencial"
+              {% if student.type == "Presencial" %}
+              checked
+              {% endif%}
+              >Presencial
+            </span>
+             <span>
+              <input 
+              type="radio" 
+              name="type" 
+              value="À distância"
+               {% if student.type == "À distância" %}
+              checked
+              {% endif%}
+              >À distância
+            </span>
+          </div>
+       </div>
+
+        <div class="item">
+         <div>Área de atuação </div>
+          <div> 
+            <input 
+            type="text"
+            name="services"
+            placeholder="Separe sua área de atuação por vírgula"
+             value="{{student.services}}"
+            >
+          </div>
+       </div>
+ 
+    <button type="submit">Salvar</button>
