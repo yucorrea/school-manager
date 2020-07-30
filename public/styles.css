@@ -184,9 +184,61 @@ a.button {
   text-decoration: none;
 }
 
-button.btnDelete {
+button.button-delete{
   margin-top: 8px;
   background-color: #c53030;
 }
 
+a.btn-novo {
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.8em;
+  border-radius: 4px;
+}
+
+.table-container {
+  display: block;
+  padding: 32px;
+}
+
+.table-list {
+  margin-top: 16px;
+  border-collapse: collapse;
+}
+
+th,
+td
+{
+  text-align: left;
+  padding: 16px 0px;
+}
+
+.table-list thead tr th {
+  color: #999;
+}
+
+.table-list tbody {
+  border-spacing: none;
+}
+
+.table-list tbody tr {
+  border-bottom: 2px solid #999;
+} 
+
+
+.table-list tbody tr:last-child {
+  border: none;
+}
+
+.table-list tbody tr td:last-child a{
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+}
 

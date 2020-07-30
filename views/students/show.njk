@@ -22,7 +22,14 @@
        <div class="item">
          <div>Data de nascimento </div>
           <div>
-            {{student.age}}
+            {{student.birth}}
+          </div>
+       </div>
+
+       <div class="item">
+         <div>E-mail</div>
+          <div>
+            {{student.email}}
           </div>
        </div>
 
@@ -33,33 +40,13 @@
           </div>
        </div>
 
-       <div class="item">
-         <div>Tipo de Aula </div>
-          <div>{{student.type}}</div>
-       </div>
-
         <div class="item">
-         <div>Área de atuação </div>
-          <div> 
-            {% for service in student.services%}
-              <span>{{service}} </span>
-            {% endfor %}
-          </div>
+         <div>Carga horária</div>
+          <div>{{student.hour}} horas</div>
        </div>
 
-         <div class="item">
-         <div>Desde</div>
-          <div> 
-          {{student.created_at}}
-          </div>
-       </div>
       <a href="/students/{{student.id}}/edit" class="button">Editar</a>
 
-      <form action="/students?_method=DELETE" method="post">
-          <input type="hidden" name="id" value="{{student.id}}">
-          <button type="submit" class="btnDelete">Deletar </button>
-      </form>
-     
     </section>
   </div>
 {%endblock%}

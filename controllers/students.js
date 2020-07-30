@@ -1,8 +1,14 @@
 const fs = require("fs");
 const data = require("../data.json");
-const { age, graduation, date } = require("../utils");
+const { age,  date } = require("../utils");
 
-//create
+//index
+exports.index = (req,res) => {
+  const students = data.students
+  return res.render("students/index", { students });
+}
+
+//post
 exports.post = (req,res) => {
 
   const keys = Object.keys(req.body);
@@ -14,7 +20,6 @@ exports.post = (req,res) => {
   });
 
   req.body.birth = Date.parse(req.body.birth);
-  req.body.created_at = Date.now();
   req.body.id = data.students.length + 1;
 
   data.students.push(req.body);
@@ -28,22 +33,25 @@ exports.post = (req,res) => {
 
 }
 
+//create
+exports.create = (req,res) => {
+  return res.render("students/create");
+}
 // show 
 exports.show = (req, res) => {
 
   const { id } = req.params;
 
-  const findTeacher = data.students.find(student => student.id == id);
+  const findStudent = data.students.find(student => student.id == id);
 
-  if(!findTeacher){
-    return res.send("Teacher not found")
+  if(!findStudent){
+    return res.send("Student not found")
   }
   
   const student = {
-    ...findTeacher,
-    age: age(findTeacher.birth),
-    services: findTeacher.services.split(","),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(findTeacher.created_at)
+    ...findStudent,
+    birth: date(findStudent.birth).birthDay,
+    created_at: new Intl.DateTimeFormat("pt-BR").format(findStudent.created_at)
   }
   return res.render("students/show", { student });
 }
@@ -53,40 +61,40 @@ exports.edit = (req, res) => {
 
   const { id } = req.params;
 
-  const findTeacher = data.students.find(student => student.id == id);
+  const findStudent = data.students.find(student => student.id == id);
 
-  if(!findTeacher){
-    return res.send("Teacher not found")
+  if(!findStudent){
+    return res.send("Student not found")
   }
 
   const student = {
-    ...findTeacher,
-    degree: graduation(findTeacher.degree),
-    birth: date(findTeacher.birth)
+    ...findStudent,
+    birth: date(findStudent.birth).iso
   }
 
   return res.render("students/edit", { student });
 }
 
 // update
-exports.put = function (req, res) {
+exports.put =  (req, res) => {
   const { id } = req.body;
   let index = 0
 
-  const findTeacher = data.students.find((student, foundIndex) => {
+  const findStudent = data.students.find((student, foundIndex) => {
     if(student.id == id){
       index = foundIndex;
       return true
     }
   });
 
-  if(!findTeacher){
-    return res.send("Teacher not found")
+  if(!findStudent){
+    return res.send("Student not found")
   }
 
   const student = {
-    ...findTeacher,
+    ...findStudent,
     ...req.body,
+    id: Number(findStudent.id),
     birth: Date.parse(req.body.birth)
   }
 
@@ -103,13 +111,13 @@ exports.put = function (req, res) {
 
 // delete
 
-exports.delete = function (req, res) {
+exports.delete =  (req, res) => {
 
   const { id } = req.body;
 
-  const filterTeachers = data.students.filter(student => student.id != id);
+  const filterStudents = data.students.filter(student => student.id != id);
 
-  data.students = filterTeachers;
+  data.students = filterStudents;
 
   fs.writeFile("data.json", JSON.stringify(data, null,2),(err) => {
     if(err) return res.send("Write file error!");

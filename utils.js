@@ -32,7 +32,10 @@ module.exports = {
     const month = `0${birthDay.getUTCMonth() + 1}`.slice(-2);
     const year = birthDay.getUTCFullYear();
 
-    return `${year}-${month}-${day}`;
+    return {
+      iso: `${year}-${month}-${day}`,
+      birthDay: `${day}/${month}/${year}`
+    };
     
   }
 }

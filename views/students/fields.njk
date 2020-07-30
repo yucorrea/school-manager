@@ -1,3 +1,4 @@
+
         <div class="item">
          <div>Avatar URL</div>
           <div>
@@ -10,15 +11,26 @@
           </div>
        </div>
 
-      <input type="text" name="id"value="{{student.id}}" hidden>
        <div class="item">
          <div>Nome completo</div>
           <div>
             <input 
             type="text"
             name="name"
-            placeholder="Nome do professor"
+            placeholder="Nome do Aluno"
              value="{{student.name}}"
+            >
+          </div>
+       </div>
+
+       <div class="item">
+         <div>E-mail</div>
+          <div>
+            <input 
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            value="{{student.email}}"
             >
           </div>
        </div>
@@ -35,72 +47,69 @@
        </div>
 
         <div class="item">
-         <div>Grau de Escolaridade</div>
+         <div>Ano escolar</div>
           <div>
            <select name="degree" >
              <option value="">Escolha uma opção</option>
              <option 
-             value="Ensino Medio Completo" 
-             {% if student.degree == "Medio" %}
+             value="5º ano do ensino fundamental" 
+             {% if student.degree == "5º ano do ensino fundamental" %}
              selected
              {%endif%}
-             >Ensino Médio Completo</option>
+             >5º ano do ensino fundamental</option>
              <option 
-             value="Ensino Superior Completo"
-             {% if student.degree == "Superior" %}
+             value="6º ano do ensino fundamental"
+             {% if student.degree == "6º ano do ensino fundamental" %}
              selected
              {%endif%}
-             >Ensino Superior Completo</option>
+             >6º ano do ensino fundamental</option>
              <option
-              value="Mestrado"
-             {% if student.degree == "Mestrado" %}
+              value="7º ano do ensino fundamental"
+             {% if student.degree == "7º ano do ensino fundamental" %}
              selected
              {%endif%}
-             >Mestrado</option>
+             >7º ano do ensino fundamental</option>
              <option 
-             value="Doutorado"
-              {% if student.degree == "Doutorado" %}
+             value="8º ano do ensino fundamental"
+              {% if student.degree == "8º ano do ensino fundamental" %}
              selected
              {%endif%}
-             >Doutorado</option>
+             >8º ano do ensino fundamental</option>
+              <option 
+             value="9º ano do ensino fundamental"
+              {% if student.degree == "9º ano do ensino fundamental" %}
+             selected
+             {%endif%}
+             >9º ano do ensino fundamental</option>
+              <option 
+             value="1º ano do ensino médio"
+              {% if student.degree == "1º ano do ensino médio" %}
+             selected
+             {%endif%}
+             >1º ano do ensino médio</option>
+              <option 
+             value="2º ano do ensino médio"
+              {% if student.degree == "2º ano do ensino médio" %}
+             selected
+             {%endif%}
+             >2º ano do ensino médio</option>
+              <option 
+             value="3º ano do ensino médio"
+              {% if student.degree == "3º ano do ensino médio" %}
+             selected
+             {%endif%}
+             >3º ano do ensino médio</option>
            </select>
           </div>
        </div>
 
-       <div class="item">
-         <div>Tipo de Aula </div>
-          <div>
-            <span>
-              <input 
-              type="radio" 
-              name="type" 
-              value="Presencial"
-              {% if student.type == "Presencial" %}
-              checked
-              {% endif%}
-              >Presencial
-            </span>
-             <span>
-              <input 
-              type="radio" 
-              name="type" 
-              value="À distância"
-               {% if student.type == "À distância" %}
-              checked
-              {% endif%}
-              >À distância
-            </span>
-          </div>
-       </div>
-
         <div class="item">
-         <div>Área de atuação </div>
+         <div>Carga horária</div>
           <div> 
             <input 
-            type="text"
-            name="services"
-            placeholder="Separe sua área de atuação por vírgula"
-             value="{{student.services}}"
+            type="number"
+            name="hour"
+            value="{{student.hour}}"
             >
           </div>
        </div>
