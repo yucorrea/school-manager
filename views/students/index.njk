@@ -17,7 +17,10 @@
       <tbody>
        {% for student in students %}
         <tr>
-          <td>{{student.name}}</td>
+          <td class="avatar">
+            <img src="{{student.avatar}}" alt="{{student.name}}">
+            <span> {{student.name}} </span>
+          </td>
           <td>{{student.email}}</td>
           <td>{{student.degree}}</td>
           <td><a href="/students/{{student.id}}">Ver</a></td>

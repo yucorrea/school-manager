@@ -16,7 +16,10 @@
       <tbody>
        {% for teacher in teachers %}
         <tr>
-          <td>{{teacher.name}}</td>
+          <td class="avatar">
+            <img src="{{teacher.avatar}}" alt="{{teacher.name}}">
+            <span> {{teacher.name}} </span>
+          </td>
           <td>{{teacher.services}}</td>
           <td><a href="/teachers/{{teacher.id}}">Ver</a></td>
         </tr>
